@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    //启动命令
     "start": "node ./bin/www"
   },
   "dependencies": {

@@ -5,7 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swaggerJSDoc = require('swagger-jsdoc');
-
 var routes = require('./routes/index');
 
 var app = express();
@@ -20,18 +19,19 @@ var swaggerDefinition = {
     host: 'localhost:3000',
     basePath: '/'
 };
-
 // options for the swagger docs
 var options = {
     // import swaggerDefinitions
     swaggerDefinition: swaggerDefinition,
     // path to the API docs
-    apis: ['./routes/*.js'],
+    // apis: ['./routes/*.js'],
+    apis: ['./routes/*.js']
 };
 
 // initialize swagger-jsdoc
 var swaggerSpec = swaggerJSDoc(options);
 
+console.log(swaggerSpec);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -52,6 +52,7 @@ app.use((req, res, next) => {
     next();
 });
 
+//调整一下顺序
 app.use('/', routes);
 
 app.get('/swagger.json', function (req, res) {
